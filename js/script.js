@@ -2,9 +2,11 @@
 let numberOfSlideshows = 20;
 let slideIndexMulti = Array(numberOfSlideshows).fill(1);
 let slideClass = Array.from({ length: numberOfSlideshows }, (_, i) => `mySlides${i + 1}`);
+let autoAdvanceIntervals = Array(numberOfSlideshows).fill(null); // Store interval IDs
 
 function plusSlidesMulti(n, no) {
     showSlidesMulti(slideIndexMulti[no] += n, no);
+    resetAutoAdvance(no); // Reset auto-advance on manual navigation
 }
 
 function showSlidesMulti(n, no) {
@@ -24,16 +26,24 @@ function showSlidesMulti(n, no) {
 window.onload = function () {
     for (let i = 0; i < slideClass.length; i++) {
         showSlidesMulti(1, i);
+        startAutoAdvance(i); // Start auto-advance for each slideshow
     }
-    autoAdvanceSlides();
-    attachPageNavigationListeners(); // Call the new function
+    attachPageNavigationListeners();
+    attachSlideNavigationListeners();
 };
 
-function autoAdvanceSlides() {
-    for (let i = 0; i < slideClass.length; i++) {
-        plusSlidesMulti(1, i);
+function startAutoAdvance(slideshowIndex) {
+    autoAdvanceIntervals[slideshowIndex] = setTimeout(() => {
+        plusSlidesMulti(1, slideshowIndex);
+        startAutoAdvance(slideshowIndex); // Continue the loop
+    }, 5000); // Advance every 5 seconds
+}
+
+function resetAutoAdvance(slideshowIndex) {
+    if (autoAdvanceIntervals[slideshowIndex]) {
+        clearTimeout(autoAdvanceIntervals[slideshowIndex]);
+        startAutoAdvance(slideshowIndex); // Restart auto-advance after manual interaction
     }
-    setTimeout(autoAdvanceSlides, 5000); // sync loop every 3 seconds
 }
 
 const links = document.querySelectorAll('.transition-link');
@@ -56,16 +66,43 @@ function attachPageNavigationListeners() {
     prevPageButtons.forEach(button => {
         button.addEventListener('click', function(event) {
             event.preventDefault();
-            // You might want to perform slideshow-specific "previous" slide logic here if needed
-            window.history.back(); // Navigate to the previous page in history
+            window.history.back();
         });
     });
 
     nextPageButtons.forEach(button => {
         button.addEventListener('click', function(event) {
             event.preventDefault();
-            // You might want to perform slideshow-specific "next" slide logic here if needed
-            window.history.forward(); // Navigate to the next page in history
+            window.history.forward();
+        });
+    });
+}
+
+function attachSlideNavigationListeners() {
+    const prevSlideButtons = document.querySelectorAll('.prev-slide');
+    const nextSlideButtons = document.querySelectorAll('.next-slide');
+
+    prevSlideButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const slideshowNumber = parseInt(this.dataset.slideshow, 10);
+            if (!isNaN(slideshowNumber) && slideshowNumber >= 1 && slideshowNumber <= numberOfSlideshows) {
+                plusSlidesMulti(-1, slideshowNumber - 1);
+            } else {
+                console.error("Invalid slideshow number in 'prev-slide' button.");
+            }
+        });
+    });
+
+    nextSlideButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const slideshowNumber = parseInt(this.dataset.slideshow, 10);
+            if (!isNaN(slideshowNumber) && slideshowNumber >= 1 && slideshowNumber <= numberOfSlideshows) {
+                plusSlidesMulti(1, slideshowNumber - 1);
+            } else {
+                console.error("Invalid slideshow number in 'next-slide' button.");
+            }
         });
     });
 }
