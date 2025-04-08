@@ -1,0 +1,636 @@
+/* Index Page */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #010504;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 5px 0;
+    border-bottom: 2px solid #2c2c2c;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    text-align: justify;
+}
+
+.logo {
+    height: auto;
+    max-height: 60px;
+    margin-right: 30px;
+}
+
+nav ul {
+    list-style: none;
+    text-align: right;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #d4d4d4;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
+}
+
+nav a:hover {
+    color: #e2cf1e;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+main {
+    padding: 80px 30px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* About Me */
+#about-container {
+    display: flex;
+    flex-direction: column; /* Stack image and text */
+    align-items: center; /* Center items horizontally */
+    gap: 20px; /* Reduce the gap between image and text */
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #252525; /* Match project background */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center text within the container */
+}
+
+#about-image {
+    flex: 0 0 auto; /* Don't grow, don't shrink, auto width */
+    max-width: 400px; /* Adjust as needed */
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0; /* Remove the default bottom margin */
+}
+
+#about-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#about-text {
+    flex: 1 1 auto; /* Allow text to take remaining space */
+}
+
+#about-text h2 {
+    color: #c0b283;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 2.2em;
+}
+
+#about-text p {
+    color: #d4d4d4;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Media query for larger screens if you want a side-by-side layout */
+@media (min-width: 769px) {
+    #about-container {
+        flex-direction: row; /* Arrange image and text in a row */
+        align-items: flex-start; /* Align items to the top */
+        text-align: left; /* Align text to the left */
+        gap: 30px; /* Adjust gap for side-by-side */
+    }
+
+    #about-image {
+        margin-bottom: 0; /* Remove bottom margin for side-by-side */
+        margin-right: 30px; /* Add space to the right of the image */
+    }
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+h2 {
+    color: #c0b283;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid #2c2c2c;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+}
+
+.project, .badge, .paper, .event {
+    border: none;
+    padding: 25px;
+    margin-bottom: 20px;
+    background-color: #252525;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover, .badge:hover, .paper:hover, .event:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    background-color: #050303;
+    text-align: center;
+    padding: 30px 0;
+    border-top: 2px solid #333;
+    color: #d6c3c3;
+}
+
+footer a {
+    color: #7bccec;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #9ad5e9;
+    text-decoration: underline;
+}
+
+.quote {
+    font-style: italic;
+    border-left: 5px solid #cc9c17;
+    padding-left: 20px;
+    margin: 20px 0;
+    color: #ccc;
+}
+
+.skill-category {
+    margin-bottom: 30px;
+}
+
+.skill-category h3 {
+    color: #5761ee;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.skill-category ul {
+    list-style-type: disc;
+    padding-left: 30px;
+}
+
+.skill-category li {
+    margin-bottom: 8px;
+}
+
+.project img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.video-thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.video-thumbnail:hover img {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 191, 165, 0.8);
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-thumbnail:hover .play-button {
+    opacity: 1;
+}
+
+.hero {
+    background-color: #181818;
+    padding: 150px 30px 100px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3.5em;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero-subtitle {
+    font-size: 1.5em;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    display: inline-block;
+    background-color: #00bfa5;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #008080;
+}
+
+/* Badge Page */
+.badge {
+    border: 1px solid #555; /* Darker border for better contrast on dark background */
+    padding: 25px; /* Slightly increased padding */
+    margin-bottom: 20px; /* Slightly increased margin */
+    background-color: #282828; /* Slightly lighter dark background */
+    border-radius: 10px; /* More rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.badge-content {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Using gap for spacing instead of margin-right on the image */
+}
+
+.badge-content img {
+    max-width: 250px; /* Slightly reduced max-width */
+    height: auto;
+    border-radius: 8px; /* More rounded corners for the image */
+    box-shadow: 0 2px 5px rgba(223, 208, 208, 0.15); /* Slightly stronger shadow */
+}
+
+.badge-content .badge-details {
+    flex-grow: 1;
+}
+
+.badge h2 {
+    color: #f0c808; /* Slightly brighter gold */
+    margin-top: 0;
+    margin-bottom: 15px; /* Slightly increased margin */
+    font-size: 2em; /* Slightly larger font size */
+    letter-spacing: 0.5px; /* Subtle letter spacing */
+}
+
+.badge p {
+    line-height: 1.7; /* Improved line height for readability */
+    margin-bottom: 10px; /* Slightly increased margin */
+    font-size: 1em; /* Slightly larger font size */
+    text-align: justify; /* Align text to the left for better readability in most cases */
+}
+
+
+
+/* Event Page */
+.event {
+    border: 1px solid #333;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+}
+
+.event-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.event-details {
+    flex: 60%; /* This should make it take 60% of the .event-content width */
+    padding-right: 20px;
+}
+
+.event-details h3 {
+    color: #be9d08;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.event-details p {
+    flex: 100%;
+    padding-right: 0;
+    text-align: justify;
+}
+
+.event-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.event-image {
+    flex: 50%; /* This should make it take 40% of the .event-content width */
+    text-align: center;
+    padding-left: 20px;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    max-width: 100%;
+    height: auto;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+/* Project Page */
+.project {
+    border: 1px solid #333;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+}
+
+.project-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-details {
+    flex: 50%;
+    padding-right: 20px;
+}
+
+.project-details h3 {
+    color: #be9d08;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.project-details p {
+    text-align: justify;
+}
+
+.project-image {
+    flex: 50%;
+    text-align: center;
+    padding-left: 20px;
+}
+
+.project-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    max-width: 100%;
+    height: auto;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@media (max-width: 768px) {
+    .badge-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .badge-content img {
+        margin-right: 0;
+        margin-bottom: 10px;
+        max-width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .badge h2 {
+        font-size: 1.6em;
+        margin-bottom: 8px;
+    }
+}
+
+/* Remove color change on visited links */
+a:visited {
+    color: inherit; /* Inherit color from parent, preventing default visited color */
+}
+
+/* Basic styling for slideshow images */
+.slideshow-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Hide all slides by default */
+.mySlides1,
+.mySlides2,
+.mySlides3,
+.mySlides4,
+.mySlides5,
+.mySlides6,
+.mySlides7,
+.mySlides8,
+.mySlides9,
+.mySlides10,
+.mySlides11,
+.mySlides12,
+.mySlides13,
+.mySlides14,
+.mySlides15,
+.mySlides16,
+.mySlides17,
+.mySlides18,
+.mySlides19,
+.mySlides20{
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Show only the active slide */
+.mySlides1.active,
+.mySlides2.active,
+.mySlides3.active,
+.mySlides4.active,
+.mySlides5.active,
+.mySlides6.active,
+.mySlides7.active,
+.mySlides8.active,
+.mySlides9.active,
+.mySlides10.active,
+.mySlides11.active,
+.mySlides12.active,
+.mySlides13.active,
+.mySlides14.active,
+.mySlides15.active,
+.mySlides16.active,
+.mySlides17.active,
+.mySlides18.active,
+.mySlides19.active,
+.mySlides20.active {
+    display: block;
+    opacity: 1;
+    position: relative;
+}
+
+/* Slideshow container should be relatively positioned */
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    height: auto;
+}
+
+/* Navigation arrows */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
