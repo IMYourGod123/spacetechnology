@@ -6,6 +6,17 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+body.fade-out {
+    opacity: 0;
+}
+
+body.fade-in {
+    opacity: 1; /* Initial state for the new page */
 }
 
 header {
@@ -633,4 +644,23 @@ a:visited {
 .prev:hover,
 .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+.fade-in-element, .slide-up-element {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in-element.visible {
+    opacity: 1;
+}
+
+.slide-up-element {
+    transform: translateY(50px);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-in-out;
+}
+
+.slide-up-element.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

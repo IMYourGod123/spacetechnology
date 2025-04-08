@@ -34,3 +34,54 @@ function autoAdvanceSlides() {
     }
     setTimeout(autoAdvanceSlides, 3000); // sync loop every 3 seconds
 }
+
+const links = document.querySelectorAll('.transition-link');
+
+links.forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        document.body.classList.add('fade-out');
+        const href = this.getAttribute('href');
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500); // Match the CSS transition duration
+    });
+});
+
+// On the new page, add the fade-in class after a slight delay
+window.onload = () => {
+    document.body.classList.add('fade-in');
+};
+
+const fadeInElements = document.querySelectorAll('.fade-in-element');
+const slideUpElements = document.querySelectorAll('.slide-up-element');
+
+const observerOptions = {
+    threshold: 0.1 // Trigger when 10% of the element is visible
+};
+
+const fadeInObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Stop observing once visible
+        }
+    });
+}, observerOptions);
+
+fadeInElements.forEach(element => {
+    fadeInObserver.observe(element);
+});
+
+const slideUpObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+slideUpElements.forEach(element => {
+    slideUpObserver.observe(element);
+});
