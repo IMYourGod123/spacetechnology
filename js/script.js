@@ -1,7 +1,7 @@
 // Multi-slideshow setup
 let numberOfSlideshows = 20;
-let slideIndexMulti = Array(numberOfSlideshows).fill(1); // For 10 slideshows
-let slideClass = Array.from({ length: numberOfSlideshows }, (_, i) => `mySlides${i + 1}`); // Unique classes
+let slideIndexMulti = Array(numberOfSlideshows).fill(1);
+let slideClass = Array.from({ length: numberOfSlideshows }, (_, i) => `mySlides${i + 1}`);
 
 function plusSlidesMulti(n, no) {
     showSlidesMulti(slideIndexMulti[no] += n, no);
@@ -26,6 +26,7 @@ window.onload = function () {
         showSlidesMulti(1, i);
     }
     autoAdvanceSlides();
+    attachPageNavigationListeners(); // Call the new function
 };
 
 function autoAdvanceSlides() {
@@ -48,3 +49,23 @@ links.forEach(link => {
     });
 });
 
+function attachPageNavigationListeners() {
+    const prevPageButtons = document.querySelectorAll('.prev-page-slide');
+    const nextPageButtons = document.querySelectorAll('.next-page-slide');
+
+    prevPageButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            // You might want to perform slideshow-specific "previous" slide logic here if needed
+            window.history.back(); // Navigate to the previous page in history
+        });
+    });
+
+    nextPageButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            // You might want to perform slideshow-specific "next" slide logic here if needed
+            window.history.forward(); // Navigate to the next page in history
+        });
+    });
+}
