@@ -33,7 +33,7 @@ function autoAdvanceSlides() {
     for (let i = 0; i < slideClass.length; i++) {
         plusSlidesMulti(1, i);
     }
-    setTimeout(autoAdvanceSlides, 3000); // sync loop every 3 seconds
+    setTimeout(autoAdvanceSlides, 5000); // sync loop every 3 seconds
 }
 
 const links = document.querySelectorAll('.transition-link');
@@ -68,4 +68,5 @@ function attachPageNavigationListeners() {
             window.history.forward(); // Navigate to the next page in history
         });
     });
+    
 }
